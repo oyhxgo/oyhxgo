@@ -1,0 +1,35 @@
+# Project: Project2
+# Makefile created by Red Panda C++ 2.25.1
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = Project2_private.res
+OBJ      = 开局.o $(RES)
+LINKOBJ  = 开局.o Project2_private.res
+CLEANOBJ  =  开局.o  Project2_private.res Project2.exe
+LIBS     = 
+INCS     =  
+CXXINCS  =  
+BIN      = Project2.exe
+CXXFLAGS = $(CXXINCS)  -g3 -pipe -Wall -D__DEBUG__
+CFLAGS   = $(INCS)  -g3 -pipe -Wall -D__DEBUG__
+RM       = del /q /f
+WINDRESFLAGS  = 
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	-$(RM) $(CLEANOBJ) > NUL 2>&1
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+开局.o: 开局.cpp
+	$(CPP) -c 开局.cpp -o 开局.o $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=gbk
+
+Project2_private.res: Project2_private.rc 
+	$(WINDRES) -i Project2_private.rc --input-format=rc -o Project2_private.res -O coff $(WINDRESFLAGS) 
+

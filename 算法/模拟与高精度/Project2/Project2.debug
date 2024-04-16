@@ -1,0 +1,31 @@
+{
+    "breakpoints": [
+        {
+            "breakpoint_type": 0,
+            "condition": "",
+            "enabled": true,
+            "filename": "开局.cpp",
+            "line": 60,
+            "timestamp": "1709469361532"
+        },
+        {
+            "breakpoint_type": 0,
+            "condition": "",
+            "enabled": true,
+            "filename": "开局.cpp",
+            "line": 174,
+            "timestamp": "1709861827969"
+        },
+        {
+            "breakpoint_type": 0,
+            "condition": "",
+            "enabled": true,
+            "filename": "开局.cpp",
+            "line": 163,
+            "timestamp": "1709862627635"
+        }
+    ],
+    "timestamp": "1710003023690",
+    "watchvars": [
+    ]
+}
