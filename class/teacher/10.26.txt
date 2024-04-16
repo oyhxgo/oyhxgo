@@ -1,0 +1,254 @@
+一个数恰好等于它的平方数的右端，这个数称为同构数。如  5 的平方是25， 5是25中的右端的数， 5就是同构数。找出1～1000之间的全部同构数。		
+
+#include <stdio.h>
+
+int main()
+{
+	for(int i=1;i<=1000;i++)
+	{
+		int a=i;	//得到当前i的值
+		int s=i*i;	//得到了平方值
+		int flag=1;	//标志为1表明是同构数
+		while(a!=0)
+		{
+			if(a%10!=s%10)		//判断这两个数的个位是否相等 
+			{
+				flag=0;			//标志改为0，退出循环 
+				break;
+			}
+			a=a/10;
+			s=s/10;				//缩小10倍 
+		}
+		if(flag)
+			printf("%d*%d=%d\t",i,i,i*i);	
+	}
+	return 0;
+}
+
+//百钱买百鸡，公鸡5元一只，母鸡3元一只
+//小鸡一元5只,100元钱正好买100只鸡。
+//问公鸡，母鸡，小鸡各几只？(穷举法)
+
+#include <stdio.h>
+
+int main()
+{
+	for(int i=0;i<=20;i++)			//公鸡的循环范围
+		for(int j=0;j<=33;j++)		//母鸡的循环范围
+			if(i*5+j*3+(100-i-j)/5==100 && (100-i-j)%5==0)
+				printf("%d,%d,%d\n",i,j,100-i-j); 
+	return 0;
+}
+
+爱因斯坦台阶问题
+一条长长的楼梯,如果每一步跨2个台阶,最后余1个台阶；每次跨3个台阶,最后余2个台阶；每次跨4个台阶,最后余3个台阶；每次跨5个台阶,最后余4个台阶；每次跨6个台阶,最后余5个台阶；每次跨7个台阶,最后刚好跨完,一个也不剩.问这个楼梯最少有多少个台阶?
+
+#include <stdio.h>
+
+int main()
+{
+	for(int i=7;;i+=7)
+		if(i%2==1 && i%3==2 && i%4==3 && i%5==4 && i%6==5)
+		{
+			printf("%d",i);
+			break;
+		}
+	return 0;
+}
+
+
+方法2：
+#include <stdio.h>
+
+int main()
+{
+	int i=7;
+	while(i%2!=1 || i%3!=2 || i%4!=3 || i%5!=4 || i%6!=5)
+	{
+		i=i+7;
+	}
+	printf("%d",i);
+	return 0;
+}
+
+//随机数
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+	srand(time(NULL));		//用时间作为种子，进行随机函数初始化 
+	int a=rand()%1000,n;	//生成随机数 
+	printf("请输入的猜的数:");
+	scanf("%d",&n);
+	while(1)
+	{
+		if(a==n)
+		{
+			printf("猜对了，真棒!\n");
+			break;
+		}
+		else if(a>n)
+		{
+			printf("猜小了，请再猜：");
+			scanf("%d",&n); 
+		}
+		else
+		{
+			printf("猜大了，请再猜：");
+			scanf("%d",&n); 
+		}
+	}
+	
+	return 0;
+}	
+
+生成n个随机数(n由用户输入)，再进行冒泡排序，把每一轮排序结果输出来。
+
+#include <bits/stdc++.h>
+
+int main()
+{
+	srand(time(NULL));		//用时间作为种子，进行随机函数初始化 
+	int a[1000];
+	int n;scanf("%d",&n);
+	for(int i=0;i<n;i++)
+		a[i]=rand()%100;		//产生n个100以内的随机数
+		
+	printf("原始数据：");
+	for(int i=0;i<n;i++)
+		printf("%4d",a[i]);
+	printf("\n");
+	
+	//以下冒泡排序
+	for(int i=0;i<n-1;i++)		//进行n-1轮冒泡
+	{
+		for(int j=0;j<n-i-1;j++)
+			if(a[j]>a[j+1])		//出现前面的数比后面的数要大
+			{
+				int temp=a[j];
+				a[j]=a[j+1];
+				a[j+1]=temp;
+			} 
+		printf("第%d轮：",i+1);
+		for(int k=0;k<n;k++)
+			printf("%4d",a[k]);
+		printf("\n");	
+	}  
+	
+	return 0;
+}
+
+
+下面是一个有趣排序过程。莫名其妙就排成有序了，你能想明白吗？？
+#include <bits/stdc++.h>
+
+int main()
+{
+	srand(time(NULL));		//用时间作为种子，进行随机函数初始化 
+	int a[1000];
+	int n;scanf("%d",&n);
+	for(int i=0;i<n;i++)
+		a[i]=rand()%100;		//产生n个100以内的随机数
+		
+	printf("原始数据：");
+	for(int i=0;i<n;i++)
+		printf("%4d",a[i]);
+	printf("\n");
+	
+	//以下冒泡排序
+	for(int i=0;i<=n-1;i++)		//进行n-1轮
+	{
+		for(int j=0;j<=n-1;j++)
+			if(a[i]<a[j])		//出现前面的数比后面的数要小
+			{
+				int temp=a[i];
+				a[i]=a[j];
+				a[j]=temp;
+			} 
+		printf("第%d轮：",i+1);
+		for(int k=0;k<n;k++)
+			printf("%4d",a[k]);
+		printf("\n");	
+	}  
+	
+	return 0;
+}
+
+
+P165 第5题
+#include <bits/stdc++.h>
+
+int main()
+{
+	srand(time(NULL));		//用时间作为种子，进行随机函数初始化 
+	int a[1000];
+	int n;scanf("%d",&n);
+	for(int i=0;i<n;i++)
+		a[i]=rand()%100;		//产生n个100以内的随机数
+		
+	printf("原始数据：");
+	for(int i=0;i<n;i++)
+		printf("%4d",a[i]);
+	printf("\n");
+	
+	for(int i=0;i<=(n-1)/2;i++)  //与中间对称的元素进行交换 
+	{
+		int temp=a[i];
+		a[i]=a[n-i-1];
+		a[n-i-1]=temp;
+	}
+	
+	printf("逆序数据：");
+	for(int i=0;i<n;i++)
+		printf("%4d",a[i]);
+	printf("\n");
+	return 0;
+}
+
+
+P165 第6题
+#include <bits/stdc++.h>
+
+int main()
+{
+	int a[12][12]={0};
+	
+	for(int i=0;i<12;i++)
+		a[i][0]=a[i][i]=1;		//让0列与对角线的值为1
+		
+	for(int i=2;i<12;i++)		//对行进行循环
+		for(int j=1;j<i;j++)	//对列进行循环
+			a[i][j]=a[i-1][j]+a[i-1][j-1];		//元素值等于上方的元素加上斜上方元素值
+			
+	for(int i=0;i<11;i++)
+	{
+		for(int j=0;j<=i;j++)
+			printf("%4d",a[i][j]);
+			printf("\n");
+	}
+	return 0;
+}
+
+P165 第6题 第二种写法
+#include <bits/stdc++.h>
+
+int main()
+{
+	int a[12][12]={0};		//所有元素初始值为0 
+	
+	a[0][1]=1;   	//只需要一个元素为1 
+		
+	for(int i=1;i<12;i++)		//对行进行循环
+		for(int j=1;j<=i;j++)	//对列进行循环
+			a[i][j]=a[i-1][j]+a[i-1][j-1];		//元素值等于上方的元素加上斜上方元素值
+			
+	for(int i=0;i<11;i++)
+	{
+		for(int j=1;j<=i;j++)
+			printf("%4d",a[i][j]);
+			printf("\n");
+	}
+	return 0;
+}
