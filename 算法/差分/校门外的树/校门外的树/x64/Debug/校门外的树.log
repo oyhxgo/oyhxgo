@@ -1,0 +1,11 @@
+﻿  校门外的树.cpp
+D:\1\算法\差分\校门外的树\校门外的树\校门外的树.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\1\算法\差分\校门外的树\校门外的树\校门外的树.cpp(7,9): error C2131: 表达式的计算结果不是常数
+  D:\1\算法\差分\校门外的树\校门外的树\校门外的树.cpp(7,8):
+  因读取超过生命周期的变量而失败
+  D:\1\算法\差分\校门外的树\校门外的树\校门外的树.cpp(7,8):
+  请参见“a”的用法
+  
+D:\1\算法\差分\校门外的树\校门外的树\校门外的树.cpp(13,8): error C3863: 不可指定数组类型“int [a+1]”
+D:\1\算法\差分\校门外的树\校门外的树\校门外的树.cpp(6,2): error C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\1\算法\差分\校门外的树\校门外的树\校门外的树.cpp(10,3): error C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
